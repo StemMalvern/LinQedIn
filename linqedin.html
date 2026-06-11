@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quinn Ashford | LinQedIn</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --li-blue:#0a66c2;
+  --li-blue-hover:#004182;
+  --navy:#002744;
+  --purple:#9a258f;
+  --bg:#f3f2ef;
+  --white:#fff;
+  --border:#e0dfdc;
+  --text:#000000e6;
+  --text-light:#00000099;
+  --text-lighter:#00000061;
+  --green:#057642;
+  --card-radius:8px;
+}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:14px;min-height:100vh;display:flex;flex-direction:column}
+
+/* ── NAV ── */
+nav{background:#fff;border-bottom:1px solid var(--border);height:52px;display:flex;align-items:center;padding:0 24px;position:sticky;top:0;z-index:100;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.nav-inner{max-width:1128px;margin:0 auto;width:100%;display:flex;align-items:center;gap:0}
+.nav-logo{font-size:0;flex-shrink:0;margin-right:8px}
+.nav-logo svg{width:34px;height:34px}
+.nav-search-wrap{position:relative;margin-right:8px}
+.nav-search{background:#eef3f8;border:none;border-radius:4px;padding:8px 8px 8px 36px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);outline:none;width:220px}
+.nav-search::placeholder{color:var(--text-light)}
+.nav-search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text-light)}
+.nav-search-icon svg{width:16px;height:16px;fill:currentColor}
+.nav-links{display:flex;align-items:flex-end;margin-left:auto;gap:0}
+.nav-item{display:flex;flex-direction:column;align-items:center;padding:0 8px;height:52px;justify-content:center;cursor:pointer;color:var(--text-light);text-decoration:none;border-bottom:2px solid transparent;font-size:12px;gap:2px;min-width:56px;transition:color .15s}
+.nav-item svg{width:24px;height:24px;fill:currentColor}
+.nav-item span{font-size:12px;white-space:nowrap}
+.nav-item:hover{color:var(--text)}
+.nav-item.active{color:var(--text);border-bottom-color:var(--text)}
+.nav-divider{width:1px;height:24px;background:var(--border);margin:0 8px;align-self:center}
+.nav-signin{padding:6px 16px;border-radius:20px;border:1.5px solid var(--li-blue);color:var(--li-blue);font-family:'Inter',sans-serif;font-size:14px;font-weight:600;background:transparent;cursor:pointer;white-space:nowrap;transition:all .15s}
+.nav-signin:hover{background:#eef3f8}
+
+/* ── PAGE LAYOUT ── */
+.page{max-width:1128px;margin:0 auto;padding:24px 0;display:grid;grid-template-columns:minmax(0,1fr) 312px;gap:24px;align-items:start;padding-left:0;padding-right:0;width:100%;box-sizing:border-box}
+@media(max-width:900px){.page{grid-template-columns:1fr;padding:0 16px 24px}}
+
+/* ── CARDS ── */
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--card-radius);overflow:hidden;margin-bottom:8px}
+.card-body{padding:20px 24px}
+.section-title{font-size:20px;font-weight:600;color:var(--text);margin-bottom:0}
+
+/* ── PROFILE TOP CARD ── */
+.cover{height:200px;background:linear-gradient(135deg,var(--navy) 0%,var(--purple) 60%,var(--navy) 100%);position:relative}
+.cover img{width:100%;height:100%;object-fit:cover}
+.profile-top{padding:0 24px 20px;position:relative}
+.avatar-outer{width:152px;height:152px;border-radius:50%;border:4px solid #fff;overflow:hidden;margin-top:-76px;background:#fff;position:relative;display:inline-block}
+.avatar-outer img{width:100%;height:100%;object-fit:cover;display:block}
+.name-row{display:flex;align-items:flex-start;justify-content:space-between;margin-top:8px;gap:12px;flex-wrap:wrap}
+.name-col h1{font-size:24px;font-weight:600;line-height:1.3;color:var(--text)}
+.name-col .pronouns{font-size:14px;color:var(--text-light);font-weight:400;margin-left:4px}
+.headline{font-size:16px;color:var(--text);margin-top:4px;font-weight:400}
+.location-line{font-size:14px;color:var(--text-light);margin-top:4px}
+.location-line a{color:var(--li-blue);text-decoration:none;font-weight:500}
+.location-line a:hover{text-decoration:underline}
+.action-row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;align-items:center}
+.btn-connect{padding:6px 20px;border-radius:20px;background:var(--li-blue);color:#fff;border:none;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background .15s}
+.btn-connect:hover{background:var(--li-blue-hover)}
+.btn-msg{padding:6px 20px;border-radius:20px;background:transparent;color:var(--li-blue);border:1.5px solid var(--li-blue);font-family:'Inter',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-msg:hover{background:#eef3f8}
+.btn-more{padding:5px 10px;border-radius:20px;background:transparent;color:var(--text);border:1.5px solid var(--text-light);font-family:'Inter',sans-serif;font-size:14px;cursor:pointer}
+.open-to-badge{display:inline-block;background:#d4edda;color:var(--green);font-size:12px;font-weight:600;padding:4px 10px;border-radius:12px;margin-top:8px}
+
+/* ── ABOUT ── */
+.about-text{font-size:14px;color:var(--text);line-height:1.7;white-space:pre-wrap}
+.show-more{color:var(--li-blue);font-weight:600;font-size:14px;background:none;border:none;cursor:pointer;padding:0;margin-top:6px}
+
+/* ── ACTIVITY ── */
+.activity-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:16px}
+.act-tab{padding:8px 16px;font-size:14px;color:var(--text-light);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;background:none;border-top:none;border-left:none;border-right:none;font-family:'Inter',sans-serif;transition:color .15s}
+.act-tab.active{color:var(--li-blue);border-bottom-color:var(--li-blue)}
+.activity-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.act-card{border:1px solid var(--border);border-radius:6px;overflow:hidden;cursor:pointer;transition:box-shadow .15s}
+.act-card:hover{box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.act-img{height:106px;overflow:hidden;background:#f0e6f6}
+.act-img img{width:100%;height:100%;object-fit:cover;display:block}
+.act-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:28px;background:linear-gradient(135deg,#f0e6f6,#e3f2fd)}
+.act-body{padding:10px 12px}
+.act-type{font-size:11px;font-weight:600;color:var(--text-light);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.act-title{font-size:13px;font-weight:400;color:var(--text);line-height:1.4;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.act-meta{font-size:11px;color:var(--text-lighter)}
+.act-link-chip{display:inline-flex;align-items:center;gap:4px;background:#fff8e1;border:1px solid #ffcc02;color:#5c4000;font-size:10px;font-weight:600;padding:3px 7px;border-radius:4px;margin-top:5px}
+.show-all-row{padding:12px 24px;border-top:1px solid var(--border)}
+.show-all-btn{color:var(--li-blue);font-family:'Inter',sans-serif;font-size:14px;font-weight:600;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:4px}
+.show-all-btn svg{width:16px;height:16px;fill:currentColor}
+.show-all-btn:hover{color:var(--li-blue-hover)}
+.hidden-acts{display:none}
+.hidden-acts.visible{display:grid}
+
+/* ── EXPERIENCE / EDUCATION ── */
+.section-list{display:flex;flex-direction:column;gap:0}
+.section-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+.section-item:first-child{padding-top:0}
+.section-item:last-child{border-bottom:none;padding-bottom:0}
+.item-logo{width:48px;height:48px;border-radius:4px;border:1px solid var(--border);background:#f0e6f6;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.item-logo.edu{background:#e3f2fd}
+.item-body{flex:1}
+.item-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:1px}
+.item-company{font-size:14px;color:var(--text);margin-bottom:2px}
+.item-company a{color:var(--text);text-decoration:none}
+.item-company a:hover{color:var(--li-blue);text-decoration:underline}
+.item-meta{font-size:13px;color:var(--text-light);margin-bottom:6px}
+.item-desc{font-size:14px;color:var(--text);line-height:1.6}
+.skill-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.skill-tag{background:#f3f2ef;color:var(--text);font-size:12px;padding:3px 10px;border-radius:12px;border:1px solid var(--border)}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.skill-item{padding:14px 0;border-bottom:1px solid var(--border)}
+.skills-grid>.skill-item:nth-last-child(-n+2){border-bottom:none}
+.skill-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px}
+.skill-endorsed{font-size:12px;color:var(--green);display:flex;align-items:center;gap:4px}
+.skill-endorsed svg{width:14px;height:14px;fill:currentColor}
+
+/* ── INTERESTS ── */
+.interest-section-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:12px;margin-top:16px}
+.interest-section-title:first-child{margin-top:0}
+.interest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.interest-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:12px 8px;border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:box-shadow .15s;gap:6px}
+.interest-item:hover{box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.interest-icon{font-size:24px}
+.interest-name{font-size:12px;font-weight:500;color:var(--text);line-height:1.3}
+.interest-type{font-size:11px;color:var(--text-lighter)}
+.follow-sm{padding:4px 14px;border-radius:12px;border:1.5px solid var(--li-blue);color:var(--li-blue);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;background:transparent;transition:all .15s}
+.follow-sm:hover{background:#eef3f8}
+
+/* ── SIDEBAR ── */
+.sidebar-card{background:#fff;border:1px solid var(--border);border-radius:var(--card-radius);padding:16px;margin-bottom:8px}
+.sidebar-card-title{font-size:16px;font-weight:600;color:var(--text);margin-bottom:12px}
+.people-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:14px;cursor:pointer}
+.people-item:last-child{margin-bottom:0}
+.people-av{width:48px;height:48px;border-radius:50%;border:1px solid var(--border);overflow:hidden;flex-shrink:0;background:#f3f2ef;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--navy)}
+.people-av img{width:100%;height:100%;object-fit:cover}
+.people-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:1px;line-height:1.3}
+.people-title{font-size:12px;color:var(--text-light);line-height:1.4}
+.connect-btn-sm{margin-top:6px;padding:4px 14px;border-radius:12px;border:1.5px solid var(--li-blue);color:var(--li-blue);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;background:transparent;display:block;transition:all .15s}
+.connect-btn-sm:hover{background:#eef3f8}
+.sidebar-text{font-size:14px;color:var(--text)}
+.sidebar-sub{font-size:13px;color:var(--text-light);margin-top:2px}
+.sidebar-url{font-size:13px;color:var(--li-blue);text-decoration:none;margin-top:4px;display:block;word-break:break-all}
+.sidebar-url:hover{text-decoration:underline}
+.sidebar-footer{font-size:11px;color:var(--text-lighter);line-height:2}
+.sidebar-footer a{color:var(--text-lighter);text-decoration:none}
+.sidebar-footer a:hover{text-decoration:underline;color:var(--li-blue)}
+
+/* ── ACTIVITY MODAL ── */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:300;display:flex;align-items:flex-start;justify-content:center;padding:24px;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-bg.open{opacity:1;pointer-events:all}
+.modal-box{background:#fff;border-radius:8px;width:100%;max-width:720px;margin:auto;transform:translateY(8px);transition:transform .25s cubic-bezier(.25,.46,.45,.94)}
+.modal-bg.open .modal-box{transform:translateY(0)}
+.modal-head{background:var(--navy);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-radius:8px 8px 0 0}
+.modal-head h2{color:#fff;font-size:16px;font-weight:600}
+.modal-head span{color:rgba(255,255,255,.6);font-size:12px;margin-left:8px;font-weight:400}
+.modal-x{background:none;border:none;color:rgba(255,255,255,.7);font-size:24px;cursor:pointer;line-height:1;padding:0 4px}
+.modal-x:hover{color:#fff}
+.modal-body-inner{padding:0}
+.modal-act-item{display:flex;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border)}
+.modal-act-item:last-child{border-bottom:none}
+.modal-act-av{width:40px;height:40px;border-radius:50%;overflow:hidden;border:1px solid var(--border);flex-shrink:0}
+.modal-act-av img{width:100%;height:100%;object-fit:cover}
+.modal-act-body{flex:1}
+.modal-act-type{font-size:11px;font-weight:600;color:var(--text-light);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.modal-act-text{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:6px}
+.modal-act-img{width:100%;height:150px;object-fit:cover;border-radius:6px;display:block;margin-bottom:6px}
+.modal-act-meta{font-size:12px;color:var(--text-lighter)}
+.ext-link{display:inline-flex;align-items:center;gap:5px;background:#fff8e1;border:1px solid #ffcc02;color:#5c4000;font-size:13px;font-weight:600;padding:6px 14px;border-radius:6px;text-decoration:none;margin-bottom:6px;transition:background .15s}
+.ext-link:hover{background:#fff3cd}
+.ext-link svg{width:14px;height:14px;fill:currentColor}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:20px;font-size:12px;margin-top:auto}
+.f-logo{font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:#fff;display:block;margin-bottom:6px}
+.f-logo span{color:#c8a0c4;font-weight:300}
+.f-accent{display:inline-block;width:28px;height:2px;background:var(--purple);border-radius:2px;margin:6px auto 10px}
+.f-links{display:flex;justify-content:center;gap:16px;margin-bottom:8px;flex-wrap:wrap}
+.f-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:11px}
+.f-links a:hover{color:#c8a0c4}
+
+/* ── DIVIDER HEADER ── */
+.sec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.sec-header-right{font-size:13px;color:var(--li-blue);cursor:pointer;font-weight:500}
+.sec-header-right:hover{color:var(--li-blue-hover);text-decoration:underline}
+
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+<div class="nav-inner">
+  <div class="nav-logo">
+    <!-- LinQedIn logo — your branding, white background nav -->
+    <svg viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+      <rect width="34" height="34" rx="4" fill="var(--navy)"/>
+      <text x="17" y="24" font-family="Inter,sans-serif" font-size="16" font-weight="700" fill="white" text-anchor="middle">LQ</text>
+    </svg>
+  </div>
+  <div class="nav-search-wrap">
+    <span class="nav-search-icon"><svg viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+    <input class="nav-search" type="text" placeholder="Search">
+  </div>
+  <div class="nav-links">
+    <a class="nav-item active" href="#">
+      <svg viewBox="0 0 24 24"><path d="M23 9v2h-2v7a3 3 0 01-3 3h-4v-6h-4v6H6a3 3 0 01-3-3v-7H1V9l11-7z"/></svg>
+      <span>Home</span>
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24"><path d="M12 16v6H3v-6a3 3 0 013-3h3a3 3 0 013 3zm5.5-3A3.5 3.5 0 1014 9.5a3.5 3.5 0 003.5 3.5zm1 2h-2a2.5 2.5 0 00-2.5 2.5V22h7v-4.5a2.5 2.5 0 00-2.5-2.5zM7.5 2A4.5 4.5 0 1012 6.5 4.49 4.49 0 007.5 2z"/></svg>
+      <span>My Network</span>
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24"><path d="M21 13v-2H3v2a10 10 0 0018 0zm-9 9a10 10 0 01-9.95-9H3a9 9 0 0018 0h.95A10 10 0 0112 22zM12 2a10 10 0 00-9.95 9H2a10 10 0 0120 0h-.05A10 10 0 0012 2z" display="none"/><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+      <span>Jobs</span>
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <span>Messaging</span>
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9m-4.27 13a2 2 0 01-3.46 0"/></svg>
+      <span>Notifications</span>
+    </a>
+    <div class="nav-divider"></div>
+    <button class="nav-signin">Sign In</button>
+  </div>
+</div>
+</nav>
+
+<!-- ══ PAGE ══ -->
+<div style="max-width:1128px;margin:0 auto;padding:24px 16px;display:grid;grid-template-columns:minmax(0,1fr) 312px;gap:24px;align-items:start">
+
+  <!-- LEFT COLUMN -->
+  <div>
+
+    <!-- PROFILE TOP CARD -->
+    <div class="card" style="margin-bottom:8px">
+      <!-- Cover photo -->
+      <div class="cover"></div>
+      <!-- Photo + name + actions -->
+      <div class="profile-top">
+        <div class="avatar-outer">
+          <!-- Replace src with your own image: src="images/quinn-avatar.jpg" -->
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop&crop=face" alt="Quinn Ashford">
+        </div>
+        <div class="name-row">
+          <div class="name-col">
+            <h1>Quinn Ashford <span class="pronouns">(she/her)</span></h1>
+            <div class="headline">UX Designer at Meridian Studio · Crafting thoughtful digital experiences</div>
+            <div class="location-line">
+              London, England, United Kingdom ·
+              <a href="#">University of Edinburgh</a> ·
+              <a href="#">312 connections</a>
+            </div>
+            <div class="open-to-badge">Open to work</div>
+          </div>
+          <div style="display:flex;flex-direction:row;align-items:flex-start;gap:16px;flex-shrink:0;padding-top:4px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <div style="width:36px;height:36px;background:#f0e6f6;border-radius:4px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px">🎨</div>
+              <div>
+                <div style="font-size:12px;color:var(--text-light)">Meridian Studio</div>
+                <div style="font-size:11px;color:var(--text-lighter)">Shoreditch, London</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <div style="width:36px;height:36px;background:#e3f2fd;border-radius:4px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px">🎓</div>
+              <div>
+                <div style="font-size:12px;color:var(--text-light)">University of Edinburgh</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="action-row">
+          <button class="btn-connect">Connect</button>
+          <button class="btn-msg">Message</button>
+          <button class="btn-more">More ▾</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="card">
+      <div class="card-body">
+        <div class="sec-header">
+          <div class="section-title">About</div>
+        </div>
+        <div class="about-text" id="aboutText">UX Designer with nearly five years of experience in agency environments, working across fintech, healthcare, and consumer products. Currently at Meridian Studio in Shoreditch, where I lead design across end-to-end product projects from research through to delivery.
+
+I'm particularly interested in the space where user research and visual design meet — getting the thinking right before the pixels exist. I care about work that is genuinely useful, not just aesthetically pleasing.
+
+Outside of work I'm involved in animal welfare volunteering with London Paws Rescue, and spend my weekends either at yoga, on a slow run around Hackney, or reading something I probably should have read years ago.
+
+Always happy to connect with other designers, researchers, and anyone working on problems worth solving.</div>
+      </div>
+    </div>
+
+    <!-- ACTIVITY -->
+    <div class="card">
+      <div class="card-body" style="padding-bottom:0">
+        <div class="sec-header" style="margin-bottom:4px">
+          <div class="section-title">Activity</div>
+          <span style="font-size:13px;color:var(--text-light)">312 followers</span>
+        </div>
+        <div class="activity-tabs">
+          <button class="act-tab active">Posts</button>
+          <button class="act-tab">Comments</button>
+          <button class="act-tab">Images</button>
+        </div>
+        <div class="activity-grid" id="actPreview"></div>
+        <div class="activity-grid hidden-acts" id="actHidden"></div>
+      </div>
+      <div class="show-all-row">
+        <button class="show-all-btn" id="showAllBtn" onclick="toggleActs()">
+          Show all activity
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="card">
+      <div class="card-body">
+        <div class="sec-header">
+          <div class="section-title">Experience</div>
+        </div>
+        <div class="section-list">
+          <div class="section-item">
+            <div class="item-logo">🎨</div>
+            <div class="item-body">
+              <div class="item-title">UX Designer</div>
+              <div class="item-company"><a href="#">Meridian Studio</a> · Full-time</div>
+              <div class="item-meta">Oct 2022 – Present · 2 yrs 8 mos · London, England · On-site</div>
+              <div class="item-desc">Lead designer on multi-disciplinary product projects for clients across fintech, healthcare, and consumer sectors. Responsibilities span UX research, information architecture, interaction design, and design system work.</div>
+              <div class="skill-tags">
+                <span class="skill-tag">Figma</span>
+                <span class="skill-tag">UX Research</span>
+                <span class="skill-tag">Interaction Design</span>
+              </div>
+            </div>
+          </div>
+          <div class="section-item">
+            <div class="item-logo">🎨</div>
+            <div class="item-body">
+              <div class="item-title">Junior UX Designer</div>
+              <div class="item-company"><a href="#">Meridian Studio</a> · Full-time</div>
+              <div class="item-meta">Sept 2020 – Oct 2022 · 2 yrs 2 mos · London, England · On-site</div>
+              <div class="item-desc">Joined as a junior hire. Worked across visual design, wireframing, and user testing for a range of studio clients. Promoted to mid-level in October 2022.</div>
+              <div class="skill-tags">
+                <span class="skill-tag">Wireframing</span>
+                <span class="skill-tag">Prototyping</span>
+                <span class="skill-tag">User Testing</span>
+              </div>
+            </div>
+          </div>
+          <div class="section-item">
+            <div class="item-logo" style="background:#f3f2ef">💻</div>
+            <div class="item-body">
+              <div class="item-title">Freelance UX/UI Designer</div>
+              <div class="item-company">Self-employed</div>
+              <div class="item-meta">Oct 2019 – Aug 2020 · 11 mos · Remote</div>
+              <div class="item-desc">Freelance projects following graduation while building my portfolio. Small-business websites and early-stage app design.</div>
+            </div>
+          </div>
+          <div class="section-item">
+            <div class="item-logo" style="background:#e8f5e9">🖥️</div>
+            <div class="item-body">
+              <div class="item-title">UX/UI Design Intern</div>
+              <div class="item-company"><a href="#">Fenwick &amp; Webb Digital</a></div>
+              <div class="item-meta">June 2019 – Aug 2019 · 3 mos · Edinburgh, Scotland</div>
+              <div class="item-desc">Summer internship. Assisted the product team with interface design for an internal HR tool. First professional design experience.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="card">
+      <div class="card-body">
+        <div class="sec-header">
+          <div class="section-title">Education</div>
+        </div>
+        <div class="section-list">
+          <div class="section-item">
+            <div class="item-logo edu">🎓</div>
+            <div class="item-body">
+              <div class="item-title">University of Edinburgh</div>
+              <div class="item-company">Bachelor of Arts (Hons), Design</div>
+              <div class="item-meta">2015 – 2019</div>
+              <div class="item-desc">Graduated with First Class Honours. Dissertation focused on accessible design in public-facing digital services. Active member of the Design Society and the Edinburgh University Animal Ethics Group.</div>
+            </div>
+          </div>
+          <div class="section-item">
+            <div class="item-logo edu">🏫</div>
+            <div class="item-body">
+              <div class="item-title">George Watson's College</div>
+              <div class="item-company">Scottish Highers &amp; Advanced Highers</div>
+              <div class="item-meta">2009 – 2015 · Edinburgh, Scotland</div>
+              <div class="item-desc">Highers: Art &amp; Design (A), English (A), Mathematics (B), Biology (B), History (A). Head of the school's environmental action group in final year.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="card">
+      <div class="card-body">
+        <div class="sec-header">
+          <div class="section-title">Skills</div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-name">User Experience (UX) Design</div>
+            <div class="skill-endorsed">
+              <svg viewBox="0 0 16 16"><path d="M8 1l2.5 5h5.5l-4.5 4 1.5 5.5L8 12.5 3 15.5l1.5-5.5L0 6h5.5z"/></svg>
+              Endorsed by Tom Hargreaves and 11 others
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Figma</div>
+            <div class="skill-endorsed">
+              <svg viewBox="0 0 16 16"><path d="M8 1l2.5 5h5.5l-4.5 4 1.5 5.5L8 12.5 3 15.5l1.5-5.5L0 6h5.5z"/></svg>
+              Endorsed by Tom Hargreaves and 8 others
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">User Research</div>
+            <div class="skill-endorsed">
+              <svg viewBox="0 0 16 16"><path d="M8 1l2.5 5h5.5l-4.5 4 1.5 5.5L8 12.5 3 15.5l1.5-5.5L0 6h5.5z"/></svg>
+              Endorsed by 7 connections
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Interaction Design</div>
+            <div class="skill-endorsed">
+              <svg viewBox="0 0 16 16"><path d="M8 1l2.5 5h5.5l-4.5 4 1.5 5.5L8 12.5 3 15.5l1.5-5.5L0 6h5.5z"/></svg>
+              Endorsed by 6 connections
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Wireframing &amp; Prototyping</div>
+            <div class="skill-endorsed">
+              <svg viewBox="0 0 16 16"><path d="M8 1l2.5 5h5.5l-4.5 4 1.5 5.5L8 12.5 3 15.5l1.5-5.5L0 6h5.5z"/></svg>
+              Endorsed by 5 connections
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Animal Welfare Advocacy</div>
+            <div class="skill-endorsed">
+              <svg viewBox="0 0 16 16"><path d="M8 1l2.5 5h5.5l-4.5 4 1.5 5.5L8 12.5 3 15.5l1.5-5.5L0 6h5.5z"/></svg>
+              Endorsed by London Paws Rescue and 3 others
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERESTS -->
+    <div class="card">
+      <div class="card-body">
+        <div class="sec-header">
+          <div class="section-title">Interests</div>
+        </div>
+        <div class="interest-section-title">Companies</div>
+        <div class="interest-grid">
+          <div class="interest-item"><div class="interest-icon">🖊️</div><div class="interest-name">Figma</div><div class="interest-type">Software</div><button class="follow-sm">Following</button></div>
+          <div class="interest-item"><div class="interest-icon">💡</div><div class="interest-name">IDEO</div><div class="interest-type">Design</div><button class="follow-sm">Following</button></div>
+          <div class="interest-item"><div class="interest-icon">🌿</div><div class="interest-name">Lush Cosmetics</div><div class="interest-type">Retail</div><button class="follow-sm">Following</button></div>
+          <div class="interest-item"><div class="interest-icon">🐾</div><div class="interest-name">RSPCA</div><div class="interest-type">Animal welfare</div><button class="follow-sm">Following</button></div>
+          <div class="interest-item"><div class="interest-icon">🌍</div><div class="interest-name">Greenpeace UK</div><div class="interest-type">Environment</div><button class="follow-sm">Following</button></div>
+          <div class="interest-item"><div class="interest-icon">🎨</div><div class="interest-name">Adobe</div><div class="interest-type">Software</div><button class="follow-sm">Following</button></div>
+        </div>
+        <div class="interest-section-title">Schools</div>
+        <div class="interest-grid">
+          <div class="interest-item"><div class="interest-icon">🎓</div><div class="interest-name">University of Edinburgh</div><div class="interest-type">Higher education</div><button class="follow-sm">Following</button></div>
+        </div>
+        <div class="interest-section-title">Groups</div>
+        <div class="interest-grid">
+          <div class="interest-item"><div class="interest-icon">✏️</div><div class="interest-name">UX London Community</div><div class="interest-type">Professional</div><button class="follow-sm">Following</button></div>
+          <div class="interest-item"><div class="interest-icon">🐕</div><div class="interest-name">Dog Fosterers UK</div><div class="interest-type">Community</div><button class="follow-sm">Following</button></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /left col -->
+
+  <!-- RIGHT SIDEBAR -->
+  <div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Profile language</div>
+      <div class="sidebar-text">English</div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Public profile &amp; URL</div>
+      <div class="sidebar-sub">Your profile is public</div>
+      <a href="#" class="sidebar-url">linqedin.com/in/quinn-ashford</a>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">People Also Viewed</div>
+      <!-- Each person: name, title, connect button -->
+      <div class="people-item">
+        <div class="people-av" style="background:#e8f4ff;color:#003a66;font-size:15px">T</div>
+        <div style="flex:1">
+          <div class="people-name">Tom Hargreaves</div>
+          <div class="people-title">Senior UX Designer · Meridian Studio</div>
+          <button class="connect-btn-sm">+ Connect</button>
+        </div>
+      </div>
+      <div class="people-item">
+        <div class="people-av" style="background:#f0e6f6;color:#6a0f6a;font-size:15px">P</div>
+        <div style="flex:1">
+          <div class="people-name">Priya Krishnamurthy</div>
+          <div class="people-title">Product Manager · Canary Wharf, London</div>
+          <button class="connect-btn-sm">+ Connect</button>
+        </div>
+      </div>
+      <div class="people-item">
+        <div class="people-av" style="background:#e8f5e9;color:#1b5e20;font-size:15px">M</div>
+        <div style="flex:1">
+          <div class="people-name">Marco Levi</div>
+          <div class="people-title">Visual Designer · Freelance, London</div>
+          <button class="connect-btn-sm">+ Connect</button>
+        </div>
+      </div>
+      <div class="people-item">
+        <div class="people-av" style="background:#fff8e1;color:#5c4000;font-size:15px">E</div>
+        <div style="flex:1">
+          <div class="people-name">Ella Ashford-Reid</div>
+          <div class="people-title">Marketing Manager · Edinburgh</div>
+          <button class="connect-btn-sm">+ Connect</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card" style="padding:12px 16px">
+      <div class="sidebar-footer">
+        <a href="#">About</a> · <a href="#">Accessibility</a> · <a href="#">Help Centre</a><br>
+        <a href="#">Privacy &amp; Terms</a> · <a href="#">Ad Choices</a><br>
+        <a href="#">Advertising</a> · <a href="#">Business Services</a><br><br>
+        LinQedIn Corporation © 2025
+      </div>
+    </div>
+
+  </div>
+</div><!-- /grid -->
+
+<!-- FOOTER -->
+<footer>
+  <span class="f-logo">LinQed<span>In</span></span>
+  <div class="f-accent"></div>
+  <div class="f-links">
+    <a href="#">About</a><a href="#">Accessibility</a><a href="#">Help Centre</a>
+    <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Advertising</a>
+  </div>
+  <div>LinQedIn Corporation © 2025 · For educational and demonstration purposes only</div>
+</footer>
+
+<!-- ACTIVITY MODAL -->
+<div class="modal-bg" id="actModal" onclick="handleActBg(event)">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div>
+        <h2 style="display:inline">Quinn Ashford — Activity</h2>
+        <span>312 followers</span>
+      </div>
+      <button class="modal-x" onclick="closeActModal()">×</button>
+    </div>
+    <div class="modal-body-inner" id="actModalBody"></div>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════
+   ACTIVITY DATA
+   type       : "Post" | "Repost" | "Comment" | "Article"
+   linkedPage : optional filename — clicking opens this page
+   linkedLabel: text for the link button
+════════════════════════════════════════════════════════ */
+const activities = [
+  {
+    type:"Post",date:"2w ago",
+    image:"https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=300&fit=crop",
+    text:"Incredibly proud to say the Halcyon app redesign went live this week. Six months of research, iteration and late nights — and one of the most rewarding projects I've worked on. Huge credit to the whole team at Meridian Studio. #UXDesign #ProductDesign #Launch",
+    likes:87,comments:14
+  },
+  {
+    type:"Repost",date:"3w ago",
+    image:"https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=300&fit=crop",
+    text:"Reshared from London Paws Rescue: 'We're looking for foster carers across East London. No experience necessary — full support provided. If you have space in your home and heart, please get in touch.' This org is wonderful. 🐾",
+    likes:41,comments:6
+  },
+  {
+    type:"Comment",date:"1mo ago",
+    image:"https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=300&fit=crop",
+    text:"Commented on 'Are UX Designers Being Paid Fairly in 2025?' — 'The London market data aligns with what I've been seeing. Studio-side tends to lag behind in-house by 15–20% in my experience, which makes retention genuinely difficult for smaller agencies.'",
+    likes:23,comments:0
+  },
+  {
+    type:"Post",date:"3mo ago",
+    image:"https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=300&fit=crop",
+    text:"My sister Ella got married last weekend and I am still not recovered. Maid of honour duties complete. Edinburgh was the perfect backdrop. So much love for this family. @Ella Ashford-Reid 💍",
+    likes:312,comments:28
+  },
+  {
+    type:"Repost",date:"4mo ago",
+    image:"https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=300&fit=crop",
+    text:"Reshared from Marco Levi: 'Five principles for visual design that actually serves the user — not just the portfolio.' Really solid piece. The third point about restraint is something I remind myself of constantly.",
+    likes:34,comments:5
+  },
+  /* ── shown only when 'show all' is active ── */
+  {
+    type:"Post",date:"6mo ago",
+    image:"https://images.unsplash.com/photo-1593113630400-ea4288922559?w=600&h=300&fit=crop",
+    text:"Spent Saturday at the National Animal Welfare March in London. Design is one way I try to make things better. This is another. #AnimalWelfare #MarchForAnimals",
+    likes:156,comments:22
+  },
+  {
+    type:"Comment",date:"5mo ago",
+    image:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=300&fit=crop",
+    text:"Congratulations to Sarah Chen on her new role at Google DeepMind — so well deserved. One of the best researchers I've had the chance to work alongside.",
+    likes:18,comments:0
+  },
+  {
+    type:"Post",date:"8mo ago",
+    image:"https://images.unsplash.com/photo-1569012871812-f38ee64cd54c?w=600&h=300&fit=crop",
+    text:"Ten years since my first day at the University of Edinburgh. I moved there knowing almost no one, and left with the people who are still my closest friends and a career I genuinely love. #UoE",
+    likes:204,comments:31
+  },
+  {
+    type:"Post",date:"10mo ago",
+    image:"https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=300&fit=crop",
+    text:"Ran my first proper 5k this morning without stopping. Four months ago I could barely run to the end of the road. London Fields at 7am is a genuinely beautiful place to be embarrassingly out of breath. 🏃‍♀️",
+    likes:143,comments:19
+  },
+
+  {
+    type:"Repost",date:"9mo ago",
+    image:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=300&fit=crop",
+    text:"Reshared: 'Why plant-based eating is better for focus and energy at work' — A few months in and honestly the difference in afternoon energy levels is real. Worth reading if you've been curious.",
+    likes:21,comments:4
+  },
+  {
+    type:"Article",date:"11mo ago",
+    image:"https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&h=300&fit=crop",
+    text:"Shared: 'The UX Research Methods Every Designer Should Know in 2024' — Good accessible overview. I'd add diary studies — underused and genuinely powerful for understanding long-term behaviour patterns.",
+    likes:38,comments:7
+  }
+];
+
+const PREVIEW = 5;
+const avURL = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face";
+
+function makeActCard(act, idx) {
+  const d = document.createElement('div');
+  d.className = 'act-card';
+  const hasImg = !!act.image;
+  const linkedChip = act.linkedPage
+    ? `<div class="act-link-chip">🔗 Profile linked</div>` : '';
+  d.innerHTML = `
+    <div class="act-img">
+      ${hasImg
+        ? `<img src="${act.image}" alt="" loading="lazy">`
+        : `<div class="act-img-placeholder">${act.type==='Post'?'✍️':act.type==='Repost'?'🔁':act.type==='Comment'?'💬':'📄'}</div>`}
+    </div>
+    <div class="act-body">
+      <div class="act-type">${act.type}</div>
+      <div class="act-title">${act.text.slice(0,90)}${act.text.length>90?'…':''}</div>
+      <div class="act-meta">${act.date} · ${act.likes} reactions</div>
+      ${linkedChip}
+    </div>`;
+  d.addEventListener('click', () => openActModal(idx));
+  return d;
+}
+
+function buildActivity() {
+  const prev = document.getElementById('actPreview');
+  const hidd = document.getElementById('actHidden');
+  activities.forEach((a, i) => {
+    const card = makeActCard(a, i);
+    if (i < PREVIEW) prev.appendChild(card);
+    else hidd.appendChild(card);
+  });
+}
+buildActivity();
+
+let actsOpen = false;
+function toggleActs() {
+  actsOpen = !actsOpen;
+  const h = document.getElementById('actHidden');
+  const btn = document.getElementById('showAllBtn');
+  h.classList.toggle('visible', actsOpen);
+  btn.innerHTML = actsOpen
+    ? 'Show less <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor"><path d="M15 18l-6-6 6-6"/></svg>'
+    : 'Show all activity <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor"><path d="M9 18l6-6-6-6"/></svg>';
+}
+
+function openActModal(startIdx) {
+  const body = document.getElementById('actModalBody');
+  body.innerHTML = activities.map((a,i) => {
+    const extLink = a.linkedPage
+      ? `<a class="ext-link" href="${a.linkedPage}" target="_blank">
+           <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+           ${a.linkedLabel || 'View linked profile'}
+         </a>` : '';
+    return `<div class="modal-act-item">
+      <div class="modal-act-av"><img src="${avURL}" alt="Quinn"></div>
+      <div class="modal-act-body">
+        <div class="modal-act-type">${a.type} · ${a.date}</div>
+        ${extLink}
+        <div class="modal-act-text">${a.text}</div>
+        ${a.image ? `<img class="modal-act-img" src="${a.image}" alt="" loading="lazy">` : ''}
+        <div class="modal-act-meta">${a.likes} reactions · ${a.comments||0} comments</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('actModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => {
+    const items = body.querySelectorAll('.modal-act-item');
+    if (items[startIdx]) items[startIdx].scrollIntoView({block:'start',behavior:'smooth'});
+  }, 80);
+}
+
+function closeActModal() {
+  document.getElementById('actModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleActBg(e) {
+  if (e.target === document.getElementById('actModal')) closeActModal();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeActModal();
+});
+
+document.querySelectorAll('.act-tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.act-tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
